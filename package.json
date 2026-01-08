@@ -1,0 +1,20 @@
+{
+  "name": "aym-shop",
+  "version": "1.0.0",
+  "description": "فروشگاه آنلاین AYM - کیفیت و اعتماد در هر خرید",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Building PWA...'",
+    "dev": "echo 'Development mode - use a local server'"
+  },
+  "keywords": [
+    "pwa",
+    "shop",
+    "افغانستان",
+    "فروشگاه"
+  ],
+  "author": "AYM Shop",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
