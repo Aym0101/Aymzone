@@ -3101,22 +3101,4 @@ function setupEventListeners() {
 
 // ============================================
 // START THE APPLICATION
-// ============================================
-
-document.addEventListener('DOMContentLoaded', initializeApp);
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the راهنمای خرید button in sticky header
-    const navGuideButton = document.getElementById('navGuideButton');
-    
-    if (navGuideButton) {
-        navGuideButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Simply trigger click on the hamburger menu guide link
-            const hamburgerGuideLink = document.getElementById('hamburgerGuideLink');
-            if (hamburgerGuideLink) {
-                hamburgerGuideLink.click();
-            }
-        });
-    }
-});
+// ==========================
