@@ -1,6 +1,6 @@
 {
-  "name": "AYMzone",
-  "short_name": "AYMzone",
+  "name": "فروشگاه آنلاین AYM",
+  "short_name": "AYM Shop",
   "description": "کیفیت و اعتماد در هر خرید - ارسال رایگان به سراسر افغانستان",
   "lang": "fa",
   "dir": "rtl",
@@ -11,10 +11,44 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "images/logo.jpg",
+      "src": "/images/logo.jpg",
+      "sizes": "72x72",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/images/logo.jpg",
+      "sizes": "96x96",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/images/logo.jpg",
+      "sizes": "128x128",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/images/logo.jpg",
+      "sizes": "144x144",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/images/logo.jpg",
+      "sizes": "152x152",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/images/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/images/logo.jpg",
+      "sizes": "384x384",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/images/logo.jpg",
       "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "any maskable"
+      "type": "image/jpeg"
     }
   ]
 }
