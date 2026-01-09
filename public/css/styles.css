@@ -304,23 +304,23 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 5px 0;
+    padding: 8px 0;
     box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
     z-index: 999;
     border-top: 1px solid #e0e0e0;
-    height: 60px;
+    height: 68px;
 }
 
 .bottom-menu-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
     text-decoration: none;
     color: #616161;
     transition: all 0.3s ease;
     flex: 1;
-    padding: 2px 0;
+    padding: 3px 0;
 }
 
 .bottom-menu-item.active {
@@ -333,9 +333,9 @@ body {
 }
 
 .bottom-menu-icon {
-    font-size: 1.3rem;
-    width: 36px;
-    height: 36px;
+    font-size: 1.4rem;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -350,7 +350,7 @@ body {
 }
 
 .bottom-menu-text {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
     line-height: 1.2;
 }
@@ -1822,18 +1822,18 @@ body {
     }
     
     .sticky-bottom-menu {
-        height: 55px;
-        padding: 3px 0;
+        height: 62px;
+        padding: 6px 0;
     }
     
     .bottom-menu-text {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
     }
     
     .bottom-menu-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 1.1rem;
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
     }
     
     .site-footer {
@@ -1986,8 +1986,8 @@ body {
     }
     
     .sticky-bottom-menu {
-        height: 50px;
-        padding: 2px 0;
+        height: 58px;
+        padding: 5px 0;
     }
     
     .bottom-menu-item {
@@ -1995,13 +1995,13 @@ body {
     }
     
     .bottom-menu-text {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
     }
     
     .bottom-menu-icon {
-        width: 30px;
-        height: 30px;
-        font-size: 1rem;
+        width: 34px;
+        height: 34px;
+        font-size: 1.1rem;
     }
     
     .site-footer {
@@ -2073,16 +2073,112 @@ body {
     }
     
     .bottom-menu-text {
-        font-size: 0.6rem;
+        font-size: 0.65rem;
     }
     
     .bottom-menu-icon {
-        width: 28px;
-        height: 28px;
-        font-size: 0.9rem;
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
     }
     
     .site-footer {
         border-radius: 0;
     }
+}
+/* ========== NAV GUIDE BUTTON ========== */
+.nav-guide-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(57, 73, 171, 0.1) 0%, rgba(57, 73, 171, 0.05) 100%);
+    border: 2px solid rgba(57, 73, 171, 0.2);
+    color: #3949ab;
+    padding: 8px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(57, 73, 171, 0.15);
+    flex-direction: row-reverse;
+    height: 44px;
+}
+
+.nav-guide-btn i {
+    font-size: 1.1rem;
+    color: #3949ab;
+    transition: all 0.3s ease;
+}
+
+.nav-guide-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.nav-guide-btn:hover {
+    background: linear-gradient(135deg, rgba(57, 73, 171, 0.2) 0%, rgba(57, 73, 171, 0.1) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(57, 73, 171, 0.25);
+    border-color: rgba(57, 73, 171, 0.4);
+    color: #1a237e;
+}
+
+.nav-guide-btn:hover i {
+    color: #1a237e;
+    transform: scale(1.1);
+}
+
+/* Hide text on very small screens, show only icon */
+@media (max-width: 768px) {
+    .nav-guide-btn {
+        padding: 8px 12px;
+        height: 40px;
+    }
+    
+    .nav-guide-text {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-guide-btn .nav-guide-text {
+        display: none;
+    }
+    
+    .nav-guide-btn {
+        padding: 8px;
+        width: 44px;
+        height: 44px;
+        justify-content: center;
+        border-radius: 50%;
+    }
+    
+    .nav-guide-btn i {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+}
+
+/* Adjust for very small screens */
+@media (max-width: 360px) {
+    .nav-guide-btn {
+        width: 40px;
+        height: 40px;
+        padding: 6px;
+    }
+    
+    .nav-guide-btn i {
+        font-size: 1.1rem;
+    }
+}
+
+/* Ensure proper spacing in nav-actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
     }
