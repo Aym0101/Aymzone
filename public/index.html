@@ -172,19 +172,32 @@
         </a>
     </div>
     
-    <div class="nav-actions">
-        <!-- راهنمای خرید button with text and icon -->
-        <button class="nav-guide-btn" id="navGuideButton" aria-label="راهنمای خرید">
-            <i class="fas fa-shopping-bag" aria-hidden="true"></i>
-            <span class="nav-guide-text">راهنمای خرید</span>
-        </button>
-        
-        <button class="hamburger-btn" id="hamburgerBtn" aria-label="باز کردن منو" aria-expanded="false" aria-controls="hamburgerMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
+<!-- In the nav-actions div, replace or modify the buttons to include badges -->
+<div class="nav-actions">
+    <!-- راهنمای خرید button with text and icon -->
+    <button class="nav-guide-btn" id="navGuideButton" aria-label="راهنمای خرید">
+        <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+        <span class="nav-guide-text">راهنمای خرید</span>
+    </button>
+    
+    <!-- Add cart button with badge -->
+    <button class="nav-action-btn" id="navCartBtn" aria-label="سبد خرید">
+        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+        <span id="navCartCount" class="nav-badge" style="display: none;">0</span>
+    </button>
+    
+    <!-- Add wishlist button with badge -->
+    <button class="nav-action-btn" id="navWishlistBtn" aria-label="علاقه‌مندی‌ها">
+        <i class="fas fa-heart" aria-hidden="true"></i>
+        <span id="navWishlistCount" class="nav-badge" style="display: none;">0</span>
+    </button>
+    
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="باز کردن منو" aria-expanded="false" aria-controls="hamburgerMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</div>
     
     <!-- Hamburger Menu -->
     <div class="hamburger-menu" id="hamburgerMenu" aria-hidden="true">
