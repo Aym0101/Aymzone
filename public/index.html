@@ -135,80 +135,77 @@
         </div>
     </div>
     
-    <!-- Sticky Navigation Header -->
-    <nav class="sticky-header" aria-label="منوی اصلی">
-        <a href="#" class="nav-brand">
-            <div class="nav-logo-fallback" id="navLogoFallback" style="display: none;" aria-hidden="true">🛍️</div>
-            <img src="images/logo.jpg" 
-                 alt="لوگوی فروشگاه آنلاین AYM" 
-                 class="nav-logo" 
-                 id="navLogoImage"
-                 width="50" 
-                 height="50"
-                 loading="eager"
-                 onerror="document.getElementById('navLogoFallback').style.display='flex'; this.style.display='none';">
-            <div class="nav-title">
-                <div class="nav-title-main">فروشگاه آنلاین AYM</div>
-                <div class="nav-title-sub">کیفیت و اعتماد</div>
-            </div>
+<!-- Sticky Navigation Header -->
+<nav class="sticky-header" aria-label="منوی اصلی">
+    <a href="#" class="nav-brand">
+        <div class="nav-logo-fallback" id="navLogoFallback" style="display: none;" aria-hidden="true">🛍️</div>
+        <img src="images/logo.jpg" 
+             alt="لوگوی فروشگاه آنلاین AYM" 
+             class="nav-logo" 
+             id="navLogoImage"
+             width="50" 
+             height="50"
+             loading="eager"
+             onerror="document.getElementById('navLogoFallback').style.display='flex'; this.style.display='none';">
+        <div class="nav-title">
+            <div class="nav-title-main">فروشگاه آنلاین AYM</div>
+            <div class="nav-title-sub">کیفیت و اعتماد</div>
+        </div>
+    </a>
+    
+    <!-- Navigation Links (Visible on desktop) -->
+    <div class="nav-links">
+        <a href="#" class="nav-link" id="navHomeLink">
+            خانه
         </a>
+        <a href="#" class="nav-link" id="navCategoriesLink">
+            دسته‌بندی
+        </a>
+        <a href="#" class="nav-link" id="navAboutLink">
+            درباره ما
+        </a>
+        <a href="#" class="nav-link" id="navContactLink">
+            تماس با ما
+        </a>
+        <a href="#" class="nav-link" id="navGuideLink">
+            راهنمای خرید
+        </a>
+    </div>
+    
+    <div class="nav-actions">
+        <!-- راهنمای خرید button with text and icon -->
+        <button class="nav-guide-btn" id="navGuideButton" aria-label="راهنمای خرید">
+            <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+            <span class="nav-guide-text">راهنمای خرید</span>
+        </button>
         
-        <!-- Navigation Links (Visible on desktop) -->
-        <div class="nav-links">
-            <a href="#" class="nav-link" id="navHomeLink">
-                خانه
-            </a>
-            <a href="#" class="nav-link" id="navCategoriesLink">
-                دسته‌بندی
-            </a>
-            <a href="#" class="nav-link" id="navAboutLink">
-                درباره ما
-            </a>
-            <a href="#" class="nav-link" id="navContactLink">
-                تماس با ما
-            </a>
-            <a href="#" class="nav-link" id="navGuideLink">
-                راهنمای خرید
-            </a>
-        </div>
-        
-        <div class="nav-actions">
-            <button class="nav-action-btn" id="wishlistBtn" aria-label="لیست علاقه‌مندی‌ها">
-                <i class="fas fa-heart" aria-hidden="true"></i>
-                <span class="nav-badge" id="wishlistCount" style="display: none;">0</span>
-            </button>
-            
-            <button class="nav-action-btn" id="cartBtn" aria-label="سبد خرید">
-                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                <span class="nav-badge" id="navCartCount" style="display: none;">0</span>
-            </button>
-            
-            <button class="hamburger-btn" id="hamburgerBtn" aria-label="باز کردن منو" aria-expanded="false" aria-controls="hamburgerMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-        
-        <!-- Hamburger Menu -->
-        <div class="hamburger-menu" id="hamburgerMenu" aria-hidden="true">
-            <a href="#" class="hamburger-item" id="hamburgerHomeLink">
-                خانه
-            </a>
-            <a href="#" class="hamburger-item" id="hamburgerCategoriesLink">
-                دسته‌بندی
-            </a>
-            <a href="#" class="hamburger-item" id="hamburgerAboutLink">
-                درباره ما
-            </a>
-            <a href="#" class="hamburger-item" id="hamburgerContactLink">
-                تماس با ما
-            </a>
-            <a href="#" class="hamburger-item" id="hamburgerGuideLink">
-                راهنمای خرید
-            </a>
-        </div>
-    </nav>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="باز کردن منو" aria-expanded="false" aria-controls="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu" id="hamburgerMenu" aria-hidden="true">
+        <a href="#" class="hamburger-item" id="hamburgerHomeLink">
+            خانه
+        </a>
+        <a href="#" class="hamburger-item" id="hamburgerCategoriesLink">
+            دسته‌بندی
+        </a>
+        <a href="#" class="hamburger-item" id="hamburgerAboutLink">
+            درباره ما
+        </a>
+        <a href="#" class="hamburger-item" id="hamburgerContactLink">
+            تماس با ما
+        </a>
+        <a href="#" class="hamburger-item" id="hamburgerGuideLink">
+            راهنمای خرید
+        </a>
+    </div>
+</nav>
+    
     
     <!-- Header Container (Only shown in products tab) -->
     <div id="headerContainer">
@@ -283,11 +280,11 @@
     
     <!-- Sticky Bottom Menu (with 4 items) -->
     <nav class="sticky-bottom-menu" aria-label="منوی پایین">
-        <a href="#" class="bottom-menu-item active" id="bottomHomeBtn">
+        <a href="#" class="bottom-menu-item active" id="bottomSupportBtn">
             <div class="bottom-menu-icon">
-                <i class="fas fa-home" aria-hidden="true"></i>
+                <i class="fas fa-headset" aria-hidden="true"></i>
             </div>
-            <span class="bottom-menu-text">خانه</span>
+            <span class="bottom-menu-text">پشتیبانی</span>
         </a>
         <a href="#" class="bottom-menu-item" id="bottomCategoriesBtn">
             <div class="bottom-menu-icon">
@@ -295,17 +292,17 @@
             </div>
             <span class="bottom-menu-text">دسته‌بندی</span>
         </a>
-        <a href="#" class="bottom-menu-item" id="bottomGuideBtn">
+        <a href="#" class="bottom-menu-item" id="bottomFavoritesBtn">
             <div class="bottom-menu-icon">
-                <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+                <i class="fas fa-heart" aria-hidden="true"></i>
             </div>
-            <span class="bottom-menu-text">راهنمای خرید</span>
+            <span class="bottom-menu-text">علاقه‌مندی</span>
         </a>
-        <a href="#" class="bottom-menu-item" id="bottomWhatsAppBtn">
+        <a href="#" class="bottom-menu-item" id="bottomCartBtn">
             <div class="bottom-menu-icon">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
             </div>
-            <span class="bottom-menu-text">پشتیبانی</span>
+            <span class="bottom-menu-text">سبد خرید</span>
         </a>
     </nav>
     
@@ -572,4 +569,4 @@
         });
     </script>
 </body>
-                </html>
+    </html>
