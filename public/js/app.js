@@ -587,21 +587,21 @@ function handleRemoveFromWishlist(productId) {
 
 function updateCartCount() {
     const count = db.getCartItemCount();
-    const cartCount = document.getElementById('navCartCount');
+    const cartBadge = document.getElementById('navCartCount');
     
-    if (cartCount) {
-        cartCount.textContent = count;
-        cartCount.style.display = count > 0 ? 'flex' : 'none';
+    if (cartBadge) {
+        cartBadge.textContent = count;
+        cartBadge.style.display = count > 0 ? 'flex' : 'none';
     }
 }
 
 function updateWishlistCount() {
     const count = db.getWishlistCount();
-    const wishlistCount = document.getElementById('wishlistCount');
+    const wishlistBadge = document.getElementById('navWishlistCount');
     
-    if (wishlistCount) {
-        wishlistCount.textContent = count;
-        wishlistCount.style.display = count > 0 ? 'flex' : 'none';
+    if (wishlistBadge) {
+        wishlistBadge.textContent = count;
+        wishlistBadge.style.display = count > 0 ? 'flex' : 'none';
     }
 }
 
@@ -1580,6 +1580,35 @@ function setupEventListeners() {
             hamburgerMenu.classList.remove('show');
         });
     }
+    // Get the new button elements
+const navCartBtn = document.getElementById('navCartBtn');
+const navWishlistBtn = document.getElementById('navWishlistBtn');
+
+// Add click event for cart button
+if (navCartBtn) {
+    navCartBtn.addEventListener('click', () => {
+        document.querySelector('.tab[data-tab="cart"]').click();
+        
+        // Update bottom menu active state
+        document.querySelectorAll('.bottom-menu-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        if (bottomCartBtn) bottomCartBtn.classList.add('active');
+    });
+}
+
+// Add click event for wishlist button
+if (navWishlistBtn) {
+    navWishlistBtn.addEventListener('click', () => {
+        document.querySelector('.tab[data-tab="wishlist"]').click();
+        
+        // Update bottom menu active state
+        document.querySelectorAll('.bottom-menu-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        if (bottomWishlistBtn) bottomWishlistBtn.classList.add('active');
+    });
+}
 }
 
 // ============================================
