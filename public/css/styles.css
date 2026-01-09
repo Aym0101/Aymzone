@@ -93,6 +93,62 @@ body {
     border-bottom: 1px solid #e0e0e0;
 }
 
+/* ========== NAV ACTION BUTTONS WITH BADGES ========== */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.nav-action-btn {
+    position: relative;
+    background: rgba(57, 73, 171, 0.1);
+    border: none;
+    color: #3949ab;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-action-btn:hover {
+    background: rgba(57, 73, 171, 0.2);
+    transform: translateY(-2px);
+}
+
+.nav-badge {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background: linear-gradient(135deg, #ff4081 0%, #f50057 100%);
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Update the cart badge specifically */
+#navCartCount {
+    background: linear-gradient(135deg, #ff4081 0%, #f50057 100%);
+}
+
+#wishlistCount {
+    background: linear-gradient(135deg, #ff4081 0%, #f50057 100%);
+}
+
 .nav-brand {
     display: flex;
     align-items: center;
