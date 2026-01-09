@@ -2143,7 +2143,8 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+/* UPDATED: Show text at 360px and above, hide only below 360px */
+@media (max-width: 359px) {
     .nav-guide-btn .nav-guide-text {
         display: none;
     }
@@ -2163,7 +2164,7 @@ body {
 }
 
 /* Adjust for very small screens */
-@media (max-width: 360px) {
+@media (max-width: 359px) {
     .nav-guide-btn {
         width: 40px;
         height: 40px;
@@ -2172,6 +2173,24 @@ body {
     
     .nav-guide-btn i {
         font-size: 1.1rem;
+    }
+}
+
+/* NEW: Ensure button looks good on 360px - 480px screens */
+@media (min-width: 360px) and (max-width: 480px) {
+    .nav-guide-btn {
+        padding: 8px 10px;
+        height: 38px;
+        gap: 6px;
+    }
+    
+    .nav-guide-text {
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+    
+    .nav-guide-btn i {
+        font-size: 1rem;
     }
 }
 
