@@ -2201,3 +2201,36 @@ body {
     gap: 10px;
     flex-shrink: 0;
 }
+
+/* Bottom menu badge styles */
+.bottom-menu-item {
+    position: relative;
+}
+
+.sticky-bottom-menu .nav-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: linear-gradient(135deg, #ff4081 0%, #f50057 100%);
+    color: white;
+    font-size: 9px !important;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    z-index: 1;
+}
+
+@media (max-width: 480px) {
+    .sticky-bottom-menu .nav-badge {
+        width: 14px;
+        height: 14px;
+        font-size: 8px !important;
+        top: -4px;
+        right: -4px;
+    }
+}
