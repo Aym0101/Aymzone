@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa-AF" dir="rtl">
+<html lang="fa" dir="rtl">
 <head>
     <link rel="icon" href="/images/logo.jpg" type="image/jpeg">
     <link rel="apple-touch-icon" href="/images/logo.jpg">
@@ -8,10 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فروشگاه آنلاین AYM - کیفیت و اعتماد در هر خرید</title>
-    
-    <!-- Preconnect to external resources -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#3949ab">
@@ -33,209 +29,127 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aymzone.com">
     <meta property="og:image" content="https://aymzone.com/images/logo.jpg">
-    <meta property="og:locale" content="fa_AF">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="فروشگاه آنلاین AYM">
     <meta name="twitter:description" content="کیفیت و اعتماد در هر خرید">
-    <meta name="twitter:image" content="https://aymzone.com/images/logo.jpg">
     
-    <!-- External CSS with preload -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
-    <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
-    
-    <!-- Critical CSS (minimal styles for above-the-fold content) -->
-    <style>
-        /* Critical CSS to prevent layout shift */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            direction: rtl;
-            text-align: right;
-            overflow-x: hidden;
-        }
-        
-        .loading {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            background-color: rgba(0, 196, 252, 0.1);
-        }
-        
-        .loading-spinner {
-            font-size: 3rem;
-            color: #3949ab;
-            margin-bottom: 20px;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 5px 15px;
-            height: 65px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        /* Hide content initially to prevent flash */
-        #mainContainer,
-        #headerContainer {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .loaded #mainContainer,
-        .loaded #headerContainer {
-            opacity: 1;
-        }
-    </style>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     
     <!-- Preload critical resources -->
     <link rel="preload" href="js/app.js" as="script">
-    <link rel="preload" href="js/database.js" as="script">
+    <link rel="preload" href="css/styles.css" as="style">
 </head>
 <body>
     <!-- Loading Indicator -->
-    <div id="loading" class="loading" role="status" aria-live="polite">
-        <div class="loading-spinner" aria-hidden="true">
+    <div id="loading" class="loading">
+        <div class="loading-spinner">
             <i class="fas fa-spinner"></i>
         </div>
         <h3>در حال بارگیری محصولات...</h3>
         <p>لطفاً چند لحظه صبر کنید</p>
         <div id="loadingError" class="loading-error" style="display: none;">
-            <h4><i class="fas fa-exclamation-triangle" aria-hidden="true"></i> خطا در بارگیری محصولات</h4>
+            <h4><i class="fas fa-exclamation-triangle"></i> خطا در بارگیری محصولات</h4>
             <p>نمی‌توانیم محصولات را از سرور بارگیری کنیم. لطفاً:</p>
             <p>۱. اتصال اینترنت خود را بررسی کنید</p>
             <p>۲. صفحه را رفرش (F5) کنید</p>
             <p>۳. اگر مشکل ادامه دارد، با پشتیبانی تماس بگیرید: ۰۷۸۹۲۸۱۷۷۰</p>
             <button id="retryLoadingBtn" class="btn btn-primary" style="margin-top: 10px;">
-                <i class="fas fa-redo" aria-hidden="true"></i> تلاش مجدد
+                <i class="fas fa-redo"></i> تلاش مجدد
             </button>
         </div>
     </div>
     
-<!-- Sticky Navigation Header -->
-<nav class="sticky-header" aria-label="منوی اصلی">
-    <a href="#" class="nav-brand">
-        <div class="nav-logo-fallback" id="navLogoFallback" style="display: none;" aria-hidden="true">🛍️</div>
-        <img src="images/logo.jpg" 
-             alt="لوگوی فروشگاه آنلاین AYM" 
-             class="nav-logo" 
-             id="navLogoImage"
-             width="50" 
-             height="50"
-             loading="eager"
-             onerror="document.getElementById('navLogoFallback').style.display='flex'; this.style.display='none';">
-        <div class="nav-title">
-            <div class="nav-title-main">فروشگاه آنلاین AYM</div>
-            <div class="nav-title-sub">کیفیت و اعتماد</div>
+    <!-- Sticky Navigation Header -->
+    <nav class="sticky-header">
+        <a href="#" class="nav-brand">
+            <div class="nav-logo-fallback" id="navLogoFallback" style="display: none;">🛍️</div>
+            <img src="images/logo.jpg" 
+                 alt="فروشگاه آنلاین AYM" 
+                 class="nav-logo" 
+                 id="navLogoImage"
+                 width="50" 
+                 height="50"
+                 onerror="document.getElementById('navLogoFallback').style.display='flex'; this.style.display='none';">
+            <div class="nav-title">
+                <div class="nav-title-main"> فروشگاه آنلاین AYM</div>
+                <div class="nav-title-sub">کیفیت و اعتماد</div>
+            </div>
+        </a>
+        
+        <!-- Navigation Links (Visible on desktop) -->
+        <div class="nav-links">
+            <a href="#" class="nav-link" id="navHomeLink">
+                <i class="fas fa-home"></i> خانه
+            </a>
+            <a href="#" class="nav-link" id="navCategoriesLink">
+                <i class="fas fa-layer-group"></i> دسته‌بندی
+            </a>
+            <a href="#" class="nav-link" id="navAboutLink">
+                <i class="fas fa-info-circle"></i> درباره ما
+            </a>
+            <a href="#" class="nav-link" id="navContactLink">
+                <i class="fas fa-phone"></i> تماس با ما
+            </a>
+            <a href="#" class="nav-link" id="navGuideLink">
+                <i class="fas fa-shopping-bag"></i> راهنمای خرید
+            </a>
         </div>
-    </a>
-    
-    <!-- Navigation Links (Visible on desktop) -->
-    <div class="nav-links">
-        <a href="#" class="nav-link" id="navHomeLink">
-            خانه
-        </a>
-        <a href="#" class="nav-link" id="navCategoriesLink">
-            دسته‌بندی
-        </a>
-        <a href="#" class="nav-link" id="navAboutLink">
-            درباره ما
-        </a>
-        <a href="#" class="nav-link" id="navContactLink">
-            تماس با ما
-        </a>
-        <a href="#" class="nav-link" id="navGuideLink">
-            راهنمای خرید
-        </a>
-    </div>
-    
-<!-- In the nav-actions div, replace or modify the buttons to include badges -->
-<div class="nav-actions">
-    <!-- راهنمای خرید button with text and icon -->
-    <button class="nav-guide-btn" id="navGuideButton" aria-label="راهنمای خرید">
-        <i class="fas fa-shopping-bag" aria-hidden="true"></i>
-        <span class="nav-guide-text">راهنمای خرید</span>
-    </button>
-    
-    <!-- Add cart button with badge -->
-    <button class="nav-action-btn" id="navCartBtn" aria-label="سبد خرید">
-        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-        <span id="navCartCount" class="nav-badge" style="display: none;">0</span>
-    </button>
-    
-    <!-- Add wishlist button with badge -->
-    <button class="nav-action-btn" id="navWishlistBtn" aria-label="علاقه‌مندی‌ها">
-        <i class="fas fa-heart" aria-hidden="true"></i>
-        <span id="navWishlistCount" class="nav-badge" style="display: none;">0</span>
-    </button>
-    
-    <button class="hamburger-btn" id="hamburgerBtn" aria-label="باز کردن منو" aria-expanded="false" aria-controls="hamburgerMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-</div>
-    
-    <!-- Hamburger Menu -->
-    <div class="hamburger-menu" id="hamburgerMenu" aria-hidden="true">
-        <a href="#" class="hamburger-item" id="hamburgerHomeLink">
-            خانه
-        </a>
-        <a href="#" class="hamburger-item" id="hamburgerCategoriesLink">
-            دسته‌بندی
-        </a>
-        <a href="#" class="hamburger-item" id="hamburgerAboutLink">
-            درباره ما
-        </a>
-        <a href="#" class="hamburger-item" id="hamburgerContactLink">
-            تماس با ما
-        </a>
-        <a href="#" class="hamburger-item" id="hamburgerGuideLink">
-            راهنمای خرید
-        </a>
-    </div>
-</nav>
-    
+        
+        <div class="nav-actions">
+            <button class="nav-action-btn" id="wishlistBtn" aria-label="لیست علاقه‌مندی‌ها">
+                <i class="fas fa-heart"></i>
+                <span class="nav-badge" id="wishlistCount" style="display: none;">0</span>
+            </button>
+            
+            <button class="nav-action-btn" id="cartBtn" aria-label="سبد خرید">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="nav-badge" id="navCartCount" style="display: none;">0</span>
+            </button>
+            
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="منو">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Hamburger Menu -->
+        <div class="hamburger-menu" id="hamburgerMenu">
+            <a href="#" class="hamburger-item" id="hamburgerHomeLink">
+                 خانه
+            </a>
+            <a href="#" class="hamburger-item" id="hamburgerCategoriesLink">
+                 دسته‌بندی
+            </a>
+            <a href="#" class="hamburger-item" id="hamburgerAboutLink">
+                     درباره ما
+            </a>
+            <a href="#" class="hamburger-item" id="hamburgerContactLink">
+                     تماس با ما
+            </a>
+            <a href="#" class="hamburger-item" id="hamburgerGuideLink">
+                راهنمای خرید
+            </a>
+        </div>
+    </nav>
     
     <!-- Header Container (Only shown in products tab) -->
     <div id="headerContainer">
         <!-- Search Bar (Below Nav) -->
-        <div class="search-container">
-            <input type="text" id="searchInput" class="search-box" 
-                   placeholder="جستجو با کود محصول، نام یا توضیحات..." 
-                   aria-label="جستجوی محصولات"
-                   aria-describedby="searchHelp">
-            <i class="fas fa-search search-icon" id="searchIcon" aria-hidden="true"></i>
-            <button id="clearSearchBtn" class="clear-search-btn" style="display: none;" aria-label="پاک کردن جستجو">
-                <i class="fas fa-times" aria-hidden="true"></i>
-            </button>
-        </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-box" placeholder="جستجو با کود محصول، نام یا توضیحات..." aria-label="جستجوی محصولات">
+                <i class="fas fa-search search-icon" id="searchIcon"></i>
+                <button id="clearSearchBtn" class="clear-search-btn" style="display: none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         
         <!-- Main Header Content with Background Image -->
-        <header class="main-header" style="background: linear-gradient(135deg, rgba(26, 35, 126, 0.7) 0%, rgba(57, 73, 171, 0.6) 100%), url('images/header.jpg') center center/cover; min-height: 400px;">
+        <header class="main-header">
             <div class="header-content">
                 
                 <!-- Hero Content in Header -->
@@ -247,25 +161,25 @@
                         <div class="hero-features">
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="fas fa-shipping-fast" aria-hidden="true"></i>
+                                    <i class="fas fa-shipping-fast"></i>
                                 </div>
                                 <span class="feature-text">ارسال رایگان</span>
                             </div>
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                    <i class="fas fa-shield-alt"></i>
                                 </div>
                                 <span class="feature-text">تضمین کیفیت</span>
                             </div>
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="fas fa-headset" aria-hidden="true"></i>
+                                    <i class="fas fa-headset"></i>
                                 </div>
                                 <span class="feature-text">پشتیبانی 24/7</span>
                             </div>
                             <div class="feature-item">
                                 <div class="feature-icon">
-                                    <i class="fas fa-tags" aria-hidden="true"></i>
+                                    <i class="fas fa-tags"></i>
                                 </div>
                                 <span class="feature-text">بهترین قیمت</span>
                             </div>
@@ -275,15 +189,15 @@
                 
                 <!-- Tab Navigation -->
                 <div class="tabs-container">
-                    <div class="tabs" role="tablist" aria-label="نوع محتوا">
-                        <button class="tab active" data-tab="products" role="tab" aria-selected="true" aria-controls="productsTab">
-                            محصولات
+                    <div class="tabs">
+                        <button class="tab active" data-tab="products">
+                            <i class="fas fa-box"></i> محصولات
                         </button>
-                        <button class="tab" data-tab="cart" role="tab" aria-selected="false" aria-controls="cartTab">
-                            سبد خرید
+                        <button class="tab" data-tab="cart">
+                            <i class="fas fa-shopping-cart"></i> سبد خرید
                         </button>
-                        <button class="tab" data-tab="wishlist" role="tab" aria-selected="false" aria-controls="wishlistTab">
-                            علاقه‌مندی‌ها
+                        <button class="tab" data-tab="wishlist">
+                            <i class="fas fa-heart"></i> علاقه‌مندی‌ها
                         </button>
                     </div>
                 </div>
@@ -291,39 +205,37 @@
         </header>
     </div>
     
-<!-- Sticky Bottom Menu (with 4 items) -->
-<nav class="sticky-bottom-menu" aria-label="منوی پایین">
-    <a href="#" class="bottom-menu-item active" id="bottomHomeBtn">
-        <div class="bottom-menu-icon">
-            <i class="fas fa-home" aria-hidden="true"></i>
-        </div>
-        <span class="bottom-menu-text">خانه</span>
-    </a>
-    <a href="#" class="bottom-menu-item" id="bottomCategoriesBtn">
-        <div class="bottom-menu-icon">
-            <i class="fas fa-layer-group" aria-hidden="true"></i>
-        </div>
-        <span class="bottom-menu-text">دسته‌بندی</span>
-    </a>
-    <a href="#" class="bottom-menu-item" id="navCartBtnBottom">
-        <div class="bottom-menu-icon">
-            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-        </div>
-        <span class="bottom-menu-text">سبد خرید</span>
-        <span id="navCartCountBottom" class="nav-badge" style="display: none; position: absolute; top: -5px; right: -5px; font-size: 9px;">0</span>
-    </a>
-    <a href="#" class="bottom-menu-item" id="navWishlistBtnBottom">
-        <div class="bottom-menu-icon">
-            <i class="fas fa-heart" aria-hidden="true"></i>
-        </div>
-        <span class="bottom-menu-text">علاقه‌مندی</span>
-        <span id="navWishlistCountBottom" class="nav-badge" style="display: none; position: absolute; top: -5px; right: -5px; font-size: 9px;">0</span>
-    </a>
-</nav>
+    <!-- Sticky Bottom Menu (with 4 items) -->
+    <nav class="sticky-bottom-menu">
+        <a href="#" class="bottom-menu-item active" id="bottomHomeBtn">
+            <div class="bottom-menu-icon">
+                <i class="fas fa-home"></i>
+            </div>
+            <span class="bottom-menu-text">خانه</span>
+        </a>
+        <a href="#" class="bottom-menu-item" id="bottomCategoriesBtn">
+            <div class="bottom-menu-icon">
+                <i class="fas fa-layer-group"></i>
+            </div>
+            <span class="bottom-menu-text">دسته‌بندی</span>
+        </a>
+        <a href="#" class="bottom-menu-item" id="bottomGuideBtn">
+            <div class="bottom-menu-icon">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+            <span class="bottom-menu-text">راهنمای خرید</span>
+        </a>
+        <a href="#" class="bottom-menu-item" id="bottomWhatsAppBtn">
+            <div class="bottom-menu-icon">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <span class="bottom-menu-text">پشتیبانی</span>
+        </a>
+    </nav>
     
     <!-- Main Content Container -->
-    <main class="container" id="mainContainer">
-        <div id="productsTab" class="tab-content active" role="tabpanel" aria-labelledby="products-tab">
+    <div class="container" id="mainContainer" style="display: none;">
+        <div id="productsTab" class="tab-content active">
             <div id="productCount" class="product-count">در حال بارگیری محصولات...</div>
             
             <div id="productsContainer" class="products-grid">
@@ -331,40 +243,40 @@
             </div>
             
             <div id="emptyState" class="empty-state" style="display: none;">
-                <div style="font-size: 4rem; margin-bottom: 20px; color: #e0e0e0;" aria-hidden="true">
+                <div style="font-size: 4rem; margin-bottom: 20px; color: #e0e0e0;">
                     <i class="fas fa-box-open"></i>
                 </div>
                 <h3>محصولی یافت نشد</h3>
                 <p>برای مشاهده محصولات، لطفاً با مدیریت فروشگاه تماس بگیرید: ۰۷۸۹۲۸۱۷۷۰</p>
                 <button id="refreshProductsBtn" class="btn btn-primary" style="margin-top: 15px;">
-                    <i class="fas fa-redo" aria-hidden="true"></i> بارگیری مجدد محصولات
+                    <i class="fas fa-redo"></i> بارگیری مجدد محصولات
                 </button>
             </div>
             
             <div id="pagination" class="pagination" style="display: none;">
                 <button id="prevPageBtn" class="pagination-btn" disabled>
-                    <i class="fas fa-chevron-left" aria-hidden="true"></i> قبلی
+                    <i class="fas fa-chevron-right"></i> قبلی
                 </button>
                 <span id="pageInfo" class="page-info">صفحه 1 از 1</span>
                 <button id="nextPageBtn" class="pagination-btn" disabled>
-                    بعدی <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    بعدی <i class="fas fa-chevron-left"></i>
                 </button>
             </div>
         </div>
         
-        <div id="cartTab" class="tab-content" role="tabpanel" aria-labelledby="cart-tab" hidden>
+        <div id="cartTab" class="tab-content">
             <div id="cartContainer" class="cart-items">
                 <!-- آیتم‌های سبد خرید اینجا نمایش داده می‌شوند -->
             </div>
             
             <div id="emptyCart" class="empty-state">
-                <div style="font-size: 4rem; margin-bottom: 20px; color: #e0e0e0;" aria-hidden="true">
+                <div style="font-size: 4rem; margin-bottom: 20px; color: #e0e0e0;">
                     <i class="fas fa-shopping-cart"></i>
                 </div>
                 <h3>سبد خرید شما خالی است</h3>
                 <p>محصولات را از تب محصولات اضافه کنید</p>
                 <button id="browseProductsBtn" class="btn btn-primary" style="margin-top: 15px;">
-                    <i class="fas fa-shopping-bag" aria-hidden="true"></i> مشاهده محصولات
+                    <i class="fas fa-shopping-bag"></i> مشاهده محصولات
                 </button>
             </div>
             
@@ -379,33 +291,33 @@
                 </div>
                 <div class="form-actions">
                     <button id="clearCartBtn" class="btn btn-danger">
-                        <i class="fas fa-trash" aria-hidden="true"></i> پاک کردن سبد
+                        <i class="fas fa-trash"></i> پاک کردن سبد
                     </button>
                     <button id="checkoutBtn" class="btn btn-success">
-                        <i class="fas fa-shopping-bag" aria-hidden="true"></i> تکمیل سفارش
+                        <i class="fas fa-shopping-bag"></i> تکمیل سفارش
                     </button>
                 </div>
             </div>
         </div>
         
         <!-- Wishlist Tab -->
-        <div id="wishlistTab" class="tab-content" role="tabpanel" aria-labelledby="wishlist-tab" hidden>
+        <div id="wishlistTab" class="tab-content">
             <div id="wishlistContainer">
                 <!-- محصولات علاقه‌مندی اینجا نمایش داده می‌شوند -->
             </div>
             
             <div id="emptyWishlist" class="empty-state" style="display: none;">
-                <div style="font-size: 4rem; margin-bottom: 20px; color: #e0e0e0;" aria-hidden="true">
+                <div style="font-size: 4rem; margin-bottom: 20px; color: #e0e0e0;">
                     <i class="fas fa-heart"></i>
                 </div>
                 <h3>لیست علاقه‌مندی‌های شما خالی است</h3>
                 <p>محصولات مورد علاقه خود را با کلیک بر روی آیکون قلب اضافه کنید</p>
                 <button id="browseProductsWishlistBtn" class="btn btn-primary" style="margin-top: 15px;">
-                    <i class="fas fa-shopping-bag" aria-hidden="true"></i> مشاهده محصولات
+                    <i class="fas fa-shopping-bag"></i> مشاهده محصولات
                 </button>
             </div>
         </div>
-    </main>
+    </div>
     
     <!-- Footer -->
     <footer class="site-footer">
@@ -417,11 +329,11 @@
                 </div>
                 <div class="footer-contact">
                     <div class="contact-item">
-                        <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                        <i class="fas fa-phone-alt"></i>
                         <span>تماس: ۰۷۸۹۲۸۱۷۷۰</span>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <i class="fas fa-map-marker-alt"></i>
                         <span>لیسه مریم، مقابل مرکز تجارتی طلا، مارکیت تجارتی جام جم منزل سوم</span>
                     </div>
                 </div>
@@ -434,14 +346,14 @@
                 <a href="#" class="footer-link" id="footerFaqLink">سوالات متداول</a>
             </div>
             <div class="footer-social">
-                <a href="https://www.facebook.com/share/1A1C8xnj7G/" class="social-link" id="facebookLink" aria-label="فیس‌بوک">
-                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                <a href="https://www.facebook.com/share/1A1C8xnj7G/" class="social-link" id="facebookLink">
+                    <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://www.instagram.com/aymohstore" class="social-link" id="instagramLink" aria-label="اینستاگرام">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                <a href="https://www.instagram.com/aymohstore" class="social-link" id="instagramLink">
+                    <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="social-link" id="whatsappLink" aria-label="واتساپ">
-                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <a href="https://wa.me/93789281770" class="social-link" id="whatsappLink">
+                    <i class="fab fa-whatsapp"></i>
                 </a>
             </div>
             <div class="copyright">
@@ -452,17 +364,17 @@
     </footer>
     
     <!-- مودال جزئیات محصول -->
-    <div id="productDetailModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div id="productDetailModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close-modal" aria-label="بستن">×</button>
-                <h2 id="modalTitle">جزئیات محصول</h2>
+                <h2>جزئیات محصول</h2>
             </div>
             <div class="modal-body">
                 <div id="detailView" class="detail-view">
                     <div class="detail-gallery">
-                        <img id="detailMainImage" src="" alt="" class="detail-main-image" width="500" height="380" loading="lazy">
-                        <div class="image-fallback" style="display: none" aria-hidden="true">📦</div>
+                        <img id="detailMainImage" src="" alt="" class="detail-main-image" width="500" height="380">
+                        <div class="image-fallback" style="display: none">📦</div>
                     </div>
                     <div id="detailThumbnails" class="detail-thumbnail-container">
                         <!-- Thumbnails will be added here -->
@@ -472,7 +384,7 @@
                         
                         <div class="detail-section">
                             <h4>
-                                توضیحات کامل
+                                <i class="fas fa-align-right"></i> توضیحات کامل
                             </h4>
                             <div style="position: relative;">
                                 <p id="detailDescription" class="description-text"></p>
@@ -480,15 +392,15 @@
                         </div>
                         
                         <div class="detail-section">
-                            <h4>اطلاعات محصول</h4>
+                            <h4><i class="fas fa-info-circle"></i> اطلاعات محصول</h4>
                             <div class="detail-info">
-                                <span>قیمت: <span id="detailPrice"></span></span>
+                                <i class="fas fa-tag"></i> <span>قیمت: <span id="detailPrice"></span></span>
                             </div>
                             <div class="detail-info">
-                                <span>کود محصول: <span id="detailCode" class="product-code"></span></span>
+                                <i class="fas fa-barcode"></i> <span>کود محصول: <span id="detailCode" class="product-code"></span></span>
                             </div>
                             <div class="detail-info">
-                                <span>موجودی: <span id="detailStock"></span></span>
+                                <i class="fas fa-box"></i> <span>موجودی: <span id="detailStock"></span></span>
                             </div>
                             <div class="detail-info">
                                 <span>دسته‌بندی: <span id="detailCategory"></span></span>
@@ -497,7 +409,7 @@
                     </div>
                     <div class="form-actions">
                         <button id="addToCartBtn" class="btn btn-primary">
-                            <i class="fas fa-cart-plus" aria-hidden="true"></i> افزودن به سبد خرید
+                            <i class="fas fa-cart-plus"></i> افزودن به سبد خرید
                         </button>
                     </div>
                 </div>
@@ -506,11 +418,11 @@
     </div>
     
     <!-- مودال دسته‌بندی‌ها (ساده) -->
-    <div id="categoryModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="categoryModalTitle">
+    <div id="categoryModal" class="modal">
         <div class="modal-content category-modal-content">
             <div class="modal-header">
                 <button class="close-modal" aria-label="بستن">×</button>
-                <h2 id="categoryModalTitle">دسته‌بندی محصولات</h2>
+                <h2><i class="fas fa-layer-group"></i> دسته‌بندی محصولات</h2>
             </div>
             <div class="modal-body">
                 <div id="categoryList" class="category-list">
@@ -521,11 +433,11 @@
     </div>
     
     <!-- مودال سبد خرید/بل -->
-    <div id="cartModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="billModalTitle">
+    <div id="cartModal" class="modal">
         <div class="modal-content cart-modal-content">
             <div class="modal-header">
                 <button class="close-modal" aria-label="بستن">×</button>
-                <h2 id="billModalTitle">بل خرید</h2>
+                <h2><i class="fas fa-receipt"></i> بل خرید</h2>
             </div>
             <div class="modal-body">
                 <div id="billContent" class="bill-content">
@@ -533,13 +445,13 @@
                 </div>
                 <div class="form-actions">
                     <button id="closeBillBtn" class="btn btn-primary">
-                        <i class="fas fa-times" aria-hidden="true"></i> بستن
+                        <i class="fas fa-times"></i> بستن
                     </button>
                     <button id="whatsappShareBtn" class="btn btn-success">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i> ارسال به واتساپ
+                        <i class="fab fa-whatsapp"></i> ارسال به واتساپ
                     </button>
                     <button id="printBillBtn" class="btn btn-warning">
-                        <i class="fas fa-print" aria-hidden="true"></i> پرنت بل
+                        <i class="fas fa-print"></i> پرنت بل
                     </button>
                 </div>
             </div>
@@ -547,7 +459,7 @@
     </div>
     
     <!-- مودال اطلاعات -->
-    <div id="infoModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+    <div id="infoModal" class="modal">
         <div class="modal-content info-modal-content">
             <div class="modal-header">
                 <button class="close-modal" aria-label="بستن">×</button>
@@ -561,7 +473,7 @@
         </div>
     </div>
 
-    <!-- JavaScript Files with defer -->
+    <!-- JavaScript Files -->
     <script src="js/database.js" defer></script>
     <script src="js/app.js" defer></script>
     <script>
@@ -577,11 +489,6 @@
                     });
             });
         }
-        
-        // Add loaded class when page is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            document.body.classList.add('loaded');
-        });
     </script>
 </body>
 </html>
