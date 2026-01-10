@@ -587,33 +587,21 @@ function handleRemoveFromWishlist(productId) {
 
 function updateCartCount() {
     const count = db.getCartItemCount();
-    const cartBadge = document.getElementById('navCartCount');
-    const cartBadgeBottom = document.getElementById('navCartCountBottom');
+    const cartCount = document.getElementById('navCartCount');
     
-    if (cartBadge) {
-        cartBadge.textContent = count;
-        cartBadge.style.display = count > 0 ? 'flex' : 'none';
-    }
-    
-    if (cartBadgeBottom) {
-        cartBadgeBottom.textContent = count;
-        cartBadgeBottom.style.display = count > 0 ? 'flex' : 'none';
+    if (cartCount) {
+        cartCount.textContent = count;
+        cartCount.style.display = count > 0 ? 'flex' : 'none';
     }
 }
 
 function updateWishlistCount() {
     const count = db.getWishlistCount();
-    const wishlistBadge = document.getElementById('navWishlistCount');
-    const wishlistBadgeBottom = document.getElementById('navWishlistCountBottom');
+    const wishlistCount = document.getElementById('wishlistCount');
     
-    if (wishlistBadge) {
-        wishlistBadge.textContent = count;
-        wishlistBadge.style.display = count > 0 ? 'flex' : 'none';
-    }
-    
-    if (wishlistBadgeBottom) {
-        wishlistBadgeBottom.textContent = count;
-        wishlistBadgeBottom.style.display = count > 0 ? 'flex' : 'none';
+    if (wishlistCount) {
+        wishlistCount.textContent = count;
+        wishlistCount.style.display = count > 0 ? 'flex' : 'none';
     }
 }
 
@@ -1002,12 +990,12 @@ function setupEventListeners() {
     const refreshProductsBtn = document.getElementById('refreshProductsBtn');
     const browseProductsBtn = document.getElementById('browseProductsBtn');
     const browseProductsWishlistBtn = document.getElementById('browseProductsWishlistBtn');
+    const bottomWhatsAppBtn = document.getElementById('bottomWhatsAppBtn');
+    const bottomGuideBtn = document.getElementById('bottomGuideBtn');
     
     // Bottom menu items
-    const bottomWhatsAppBtn = document.getElementById('bottomWhatsAppBtn');
     const bottomHomeBtn = document.getElementById('bottomHomeBtn');
     const bottomCategoriesBtn = document.getElementById('bottomCategoriesBtn');
-    const bottomGuideBtn = document.getElementById('bottomGuideBtn');
     
     // Navigation links (desktop)
     const navHomeLink = document.getElementById('navHomeLink');
@@ -1285,83 +1273,27 @@ function setupEventListeners() {
         });
     }
     
-    // Bottom menu buttons functionality
-    if (bottomHomeBtn) {
-        bottomHomeBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.tab[data-tab="products"]').click();
-            
-            // Update active state
-            document.querySelectorAll('.bottom-menu-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            bottomHomeBtn.classList.add('active');
-        });
-    }
-    
-    if (bottomCategoriesBtn) {
-        bottomCategoriesBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            renderCategoryModal();
-            document.getElementById('categoryModal').style.display = 'flex';
-            
-            // Update active state
-            document.querySelectorAll('.bottom-menu-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            bottomCategoriesBtn.classList.add('active');
-        });
-    }
-    
-    if (bottomWishlistBtn) {
-        bottomWishlistBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.tab[data-tab="wishlist"]').click();
-            
-            // Update active state
-            document.querySelectorAll('.bottom-menu-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            bottomWishlistBtn.classList.add('active');
-        });
-    }
-    
-    if (bottomCartBtn) {
-        bottomCartBtn.addEventListener('click', (e) => {
-            e.preventDefault();
+    if (cartBtn) {
+        cartBtn.addEventListener('click', () => {
             document.querySelector('.tab[data-tab="cart"]').click();
             
-            // Update active state
+            // Update bottom menu active state
             document.querySelectorAll('.bottom-menu-item').forEach(item => {
                 item.classList.remove('active');
             });
-            bottomCartBtn.classList.add('active');
+            if (bottomHomeBtn) bottomHomeBtn.classList.add('active');
         });
     }
     
-    if (bottomWhatsAppBtn) {
-        bottomWhatsAppBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            openWhatsAppSupport();
+    if (wishlistBtn) {
+        wishlistBtn.addEventListener('click', () => {
+            document.querySelector('.tab[data-tab="wishlist"]').click();
             
-            // Update active state
+            // Update bottom menu active state
             document.querySelectorAll('.bottom-menu-item').forEach(item => {
                 item.classList.remove('active');
             });
-            bottomWhatsAppBtn.classList.add('active');
-        });
-    }
-    
-    if (bottomGuideBtn) {
-        bottomGuideBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            showInfoModal('راهنمای خرید', guideContent);
-            
-            // Update active state
-            document.querySelectorAll('.bottom-menu-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            bottomGuideBtn.classList.add('active');
+            if (bottomHomeBtn) bottomHomeBtn.classList.add('active');
         });
     }
     
@@ -1422,15 +1354,7 @@ function setupEventListeners() {
             document.querySelectorAll('.bottom-menu-item').forEach(item => {
                 item.classList.remove('active');
             });
-            
-// In the tab click event listener, update this section:
-if (tabName === 'products' && bottomHomeBtn) {
-    bottomHomeBtn.classList.add('active');
-} else if (tabName === 'wishlist' && navWishlistBtnBottom) {
-    navWishlistBtnBottom.classList.add('active');
-} else if (tabName === 'cart' && navCartBtnBottom) {
-    navCartBtnBottom.classList.add('active');
-}
+            if (bottomHomeBtn) bottomHomeBtn.classList.add('active');
         });
     });
     
@@ -1550,7 +1474,60 @@ if (tabName === 'products' && bottomHomeBtn) {
         });
     }
     
-    // Hamburger menu links
+    // Bottom menu functionality
+    if (bottomHomeBtn) {
+        bottomHomeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector('.tab[data-tab="products"]').click();
+            
+            // Update active state
+            document.querySelectorAll('.bottom-menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            bottomHomeBtn.classList.add('active');
+        });
+    }
+    
+    if (bottomCategoriesBtn) {
+        bottomCategoriesBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            renderCategoryModal();
+            document.getElementById('categoryModal').style.display = 'flex';
+            
+            // Update active state
+            document.querySelectorAll('.bottom-menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            bottomCategoriesBtn.classList.add('active');
+        });
+    }
+    
+    if (bottomGuideBtn) {
+        bottomGuideBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showInfoModal('راهنمای خرید', guideContent);
+            
+            // Update active state
+            document.querySelectorAll('.bottom-menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            bottomGuideBtn.classList.add('active');
+        });
+    }
+    
+    if (bottomWhatsAppBtn) {
+        bottomWhatsAppBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openWhatsAppSupport();
+            
+            // Update active state
+            document.querySelectorAll('.bottom-menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            bottomWhatsAppBtn.classList.add('active');
+        });
+    }
+    
     if (hamburgerHomeLink) {
         hamburgerHomeLink.addEventListener('click', (e) => {
             e.preventDefault();
@@ -1567,69 +1544,6 @@ if (tabName === 'products' && bottomHomeBtn) {
             hamburgerMenu.classList.remove('show');
         });
     }
-    // Get the new button elements
-const navCartBtn = document.getElementById('navCartBtn');
-const navWishlistBtn = document.getElementById('navWishlistBtn');
-
-// Add click event for cart button
-if (navCartBtn) {
-    navCartBtn.addEventListener('click', () => {
-        document.querySelector('.tab[data-tab="cart"]').click();
-        
-        // Update bottom menu active state
-        document.querySelectorAll('.bottom-menu-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        if (bottomCartBtn) bottomCartBtn.classList.add('active');
-    });
-}
-
-// Add click event for wishlist button
-if (navWishlistBtn) {
-    navWishlistBtn.addEventListener('click', () => {
-        document.querySelector('.tab[data-tab="wishlist"]').click();
-        
-        // Update bottom menu active state
-        document.querySelectorAll('.bottom-menu-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        if (bottomWishlistBtn) bottomWishlistBtn.classList.add('active');
-    });
-}
-
-    
-    
-    // Add these to your setupEventListeners function
-
-// Bottom cart button
-const navCartBtnBottom = document.getElementById('navCartBtnBottom');
-if (navCartBtnBottom) {
-    navCartBtnBottom.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelector('.tab[data-tab="cart"]').click();
-        
-        // Update bottom menu active state
-        document.querySelectorAll('.bottom-menu-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        navCartBtnBottom.classList.add('active');
-    });
-}
-
-// Bottom wishlist button
-const navWishlistBtnBottom = document.getElementById('navWishlistBtnBottom');
-if (navWishlistBtnBottom) {
-    navWishlistBtnBottom.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelector('.tab[data-tab="wishlist"]').click();
-        
-        // Update bottom menu active state
-        document.querySelectorAll('.bottom-menu-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        navWishlistBtnBottom.classList.add('active');
-    });
-}
 }
 
 // ============================================
@@ -1637,19 +1551,3 @@ if (navWishlistBtnBottom) {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', initializeApp);
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the راهنمای خرید button in sticky header
-    const navGuideButton = document.getElementById('navGuideButton');
-    
-    if (navGuideButton) {
-        navGuideButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Simply trigger click on the hamburger menu guide link
-            const hamburgerGuideLink = document.getElementById('hamburgerGuideLink');
-            if (hamburgerGuideLink) {
-                hamburgerGuideLink.click();
-            }
-        });
-    }
-});
