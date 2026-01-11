@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     
     try {
         const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY;
-        const AIRTABLE_BASE_ID = 'appoYDvbHFsSyU3K7';
+        const AIRTABLE_BASE_ID = 'app6l7wwHD0gaZ78F';
         const TABLE_NAME = 'aym7';
         
         const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${TABLE_NAME}`;
