@@ -160,6 +160,7 @@
    <header class="main-header" style="background: linear-gradient(135deg, rgba(26, 35, 126, 0.5) 0%, rgba(57, 73, 171, 0.4) 100%), url('images/header.jpg') center center/cover; min-height: 400px;">
             <div class="header-content">
                 
+
                 <!-- Agency Promotion Banner - Paste inside <div class="header-content"> -->
 <div id="agencyBanner">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -181,48 +182,58 @@
         }
     </script>
     
-    <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-lg mx-4 my-3 shadow-lg animate-fadeIn p-3">
-        <!-- Close button in top left corner -->
+    <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-lg mx-4 my-3 shadow-lg animate-fadeIn p-4">
+        <!-- Close button in top right corner -->
         <button onclick="this.closest('#agencyBanner').style.display='none'" 
                 class="absolute -top-2 -right-2 bg-white/30 hover:bg-white/40 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs border border-white/30">
             ×
         </button>
         
-        <div class="flex items-center justify-between">
-            <!-- Text section -->
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded bg-white/20 flex items-center justify-center">
+        <!-- First Row: Text Only -->
+        <div class="flex items-center justify-center mb-3">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded bg-white/20 flex items-center justify-center">
                     📢
                 </div>
                 <div class="text-right">
-                    <div class="font-bold text-sm">تبلیغات دیجیتال</div>
-                    <div class="text-xs text-white/80">فیسبوک + اینستاگرام</div>
+                    <div class="font-bold text-base whitespace-nowrap">اسپانسر صفحات اجتماعی</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Second Row: Icons + CTA Button -->
+        <div class="flex items-center justify-between pt-2 border-t border-white/10">
+            <!-- Social Icons on Left -->
+            <div class="flex items-center gap-6">
+                <!-- Facebook -->
+                <div class="flex flex-col items-center">
+                    <div class="w-9 h-9 rounded-full bg-blue-600/70 flex items-center justify-center shadow-sm mb-1">
+                        <i class="fab fa-facebook-f text-sm text-white"></i>
+                    </div>
+                    <span class="text-xs">فیسبوک</span>
+                </div>
+                
+                <!-- Instagram -->
+                <div class="flex flex-col items-center">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center shadow-sm mb-1">
+                        <i class="fab fa-instagram text-sm text-white"></i>
+                    </div>
+                    <span class="text-xs">اینستاگرام</span>
                 </div>
             </div>
             
-            <!-- Social icons with sharper colors -->
-            <div class="flex items-center gap-2">
-                <!-- Facebook - sharper blue -->
-                <div class="w-7 h-7 rounded-full bg-blue-600/70 flex items-center justify-center shadow-sm">
-                    <i class="fab fa-facebook-f text-xs text-white"></i>
-                </div>
-                <!-- Instagram - sharper gradient -->
-                <div class="w-7 h-7 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center shadow-sm">
-                    <i class="fab fa-instagram text-xs text-white"></i>
-                </div>
+            <!-- WhatsApp CTA Button on Right -->
+            <div class="flex flex-col items-center">
+                <a href="https://wa.me/93789281770?text=سلام!%20من%20از%20بنر%20تبلیغاتی%20فروشگاه%20AYM%20درباره%20خدمات%20اسپانسر%20صفحات%20اجتماعی%20پیام%20میدهم" 
+                   target="_blank" 
+                   class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-5 py-2.5 rounded-lg font-medium flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <i class="fab fa-whatsapp"></i>
+                    <span class="text-sm font-bold">مشاوره رایگان</span>
+                </a>
             </div>
-            
-            <!-- WhatsApp button -->
-            <a href="https://wa.me/93789281770?text=سلام!%20من%20از%20بنر%20تبلیغاتی%20فروشگاه%20AYM%20درباره%20خدمات%20تبلیغات%20دیجیتال%20پیام%20میدهم" 
-               target="_blank" 
-               class="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded text-xs font-medium flex items-center gap-1 shadow-sm hover:shadow">
-                <i class="fab fa-whatsapp"></i>
-                <span>مشاوره</span>
-            </a>
         </div>
     </div>
 </div>
-                
                 
                 <!-- Hero Content in Header -->
                 <div class="header-hero">
