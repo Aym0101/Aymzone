@@ -27,12 +27,12 @@ class ProductDB {
     
     async loadProductsFromAirtable() {
         try {
-            console.log('در حال بارگیری محصولات از سرور...');
+            //console.log('در حال بارگیری محصولات از سرور...');
             
             // Use the API route instead of direct Airtable API
             const response = await fetch('/api/products');
             
-            console.log('وضعیت پاسخ:', response.status, response.statusText);
+            //console.log('وضعیت پاسخ:', response.status, response.statusText);
             
             if (!response.ok) {
                 const errorText = await response.text();
@@ -41,8 +41,8 @@ class ProductDB {
             }
             
             const data = await response.json();
-            console.log('✅ داده‌های دریافتی:', data);
-            console.log(`📊 تعداد محصولات: ${data.products?.length || 0}`);
+            //console.log('✅ داده‌های دریافتی:', data);
+            //console.log(`📊 تعداد محصولات: ${data.products?.length || 0}`);
             
             if (!data.products || !Array.isArray(data.products) || data.products.length === 0) {
                 console.warn('⚠️ هیچ محصولی پیدا نشد');
@@ -54,7 +54,7 @@ class ProductDB {
             
             this.products = data.products;
             
-            console.log(`✅ ${this.products.length} محصول با موفقیت بارگیری شد`);
+            //console.log(`✅ ${this.products.length} محصول با موفقیت بارگیری شد`);
             
             this.currentSearchResults = [...this.products];
             this.saveProducts();
@@ -134,7 +134,7 @@ class ProductDB {
         try {
             localStorage.setItem(this.storageKey, JSON.stringify(this.products));
         } catch (e) {
-            console.error('خطا در ذخیره محصولات در حافظه محلی:', e);
+            //console.error('خطا در ذخیره محصولات در حافظه محلی:', e);
         }
     }
     
