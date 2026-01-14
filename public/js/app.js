@@ -29,9 +29,9 @@ async function initializeApp() {
         
         db.showLoading(false);
         
-        console.log('فروشگاه آنلاین AYM با موفقیت راه‌اندازی شد');
-        console.log(`تعداد محصولات: ${db.products.length}`);
-        console.log(`تعداد دسته‌بندی‌ها: ${db.categories.length}`);
+        //console.log('فروشگاه آنلاین AYM با موفقیت راه‌اندازی شد');
+        //console.log(`تعداد محصولات: ${db.products.length}`);
+        //console.log(`تعداد دسته‌بندی‌ها: ${db.categories.length}`);
         
         if (db.products.length === 0) {
             const productCount = document.getElementById('productCount');
@@ -338,7 +338,7 @@ function changeDetailImage(thumbnail, imageIndex) {
 }
 
 function handleImageError(imgElement, fallbackEmoji, isGallery = false) {
-    console.log('❌ خطا در بارگیری تصویر:', imgElement.src);
+    //console.log('❌ خطا در بارگیری تصویر:', imgElement.src);
     
     const parent = imgElement.parentElement;
     imgElement.style.display = 'none';
@@ -357,7 +357,7 @@ function handleImageError(imgElement, fallbackEmoji, isGallery = false) {
     fallbackDiv.style.fontSize = isGallery ? '3rem' : '2rem';
     fallbackDiv.style.color = '#ccc';
     
-    console.log('✅ نمایش fallback');
+    //console.log('✅ نمایش fallback');
 }
 
 function renderCurrentPage() {
